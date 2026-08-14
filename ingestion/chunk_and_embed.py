@@ -34,7 +34,7 @@ def read_file_content(path: Path) -> str:
         return path.read_text(errors="ignore")
 
 
-CORE_BOOKS = {"book-1.pdf", "book-2.pdf", "book-3.pdf", "book-4.pdf", "book-5.pdf"}
+CORE_BOOKS = {f"book-{i}.pdf" for i in range(1, 6)}
 
 
 def load_documents(folder: str):
