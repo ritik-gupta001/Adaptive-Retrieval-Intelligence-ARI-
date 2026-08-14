@@ -1,0 +1,27 @@
+[build]
+  command = "cd frontend && npm install && npm run build"
+  publish = "frontend/dist"
+
+
+[[redirects]]
+  from = "/query/*"
+  to = "https://ari-backend-hgnh.onrender.com/query/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/stream/*"
+  to = "https://ari-backend-hgnh.onrender.com/stream/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/health"
+  to = "https://ari-backend-hgnh.onrender.com/health"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

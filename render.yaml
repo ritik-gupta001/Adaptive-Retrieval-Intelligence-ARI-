@@ -1,0 +1,40 @@
+# render.yaml — Deploy ARI on Render (render.com)
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Deploy:
+#   1. Push repo to GitHub
+#   2. Go to render.com → New → Blueprint
+#   3. Connect repo → auto-deploys from this file
+#   4. Set environment variables in Render dashboard
+
+services:
+  # ── Backend (FastAPI) ──────────────────────────────────────────────────────
+  - type: web
+    name: ari-backend
+    runtime: python
+    region: oregon
+    plan: standard              # at least standard for the memory budget
+    buildCommand: pip install -r requirements.lock
+
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --workers 1
+    envVars:
+      - key: ENVIRONMENT
+        value: prod
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ANTHROPIC_API_KEY
+        sync: false             # set manually in Render dashboard
+      - key: TAVILY_API_KEY
+        sync: false             # set manually in Render dashboard
+      - key: CHECKPOINTER_BACKEND
+        value: sqlite
+      - key: CHECKPOINTER_CONN_STR
+        value: /opt/render/project/data/checkpoints.db
+      - key: VECTOR_STORE
+        value: chroma
+      - key: CHROMA_DIR
+        value: /opt/render/project/data/chroma
+      - key: ALLOW_ORIGINS
+        value: https://ari-frontend.onrender.com    # update with your URL
+
+

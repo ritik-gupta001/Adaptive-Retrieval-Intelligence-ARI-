@@ -1,0 +1,18 @@
+name: query_rewrite
+version: 1
+notes: >
+  Rewrites question into plain text to improve retrieval precision.
+
+system: |
+  The previous retrieval attempt did not yield satisfactory results.
+  Rewrite the user's question to improve retrieval — make it more
+  specific, use better search terminology, or rephrase ambiguous parts —
+  while preserving the original intent. Do not change what is being
+  asked, only how it's phrased for retrieval purposes.
+
+  Issues identified with the previous attempt: {issues}
+
+  Return ONLY the improved question as plain text, no preamble, no
+  quotation marks, no explanation.
+user: |
+  Original question: {question}

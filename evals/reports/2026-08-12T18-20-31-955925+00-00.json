@@ -1,0 +1,140 @@
+{
+  "timestamp": "2026-08-12T18:20:31.955925+00:00",
+  "total_queries": 8,
+  "our_metrics": {
+    "router_accuracy": 0.375,
+    "avg_confidence_score": 0.87325,
+    "avg_retry_count": 0.125,
+    "hallucination_rate": 0.0,
+    "clarification_rate": 0.0,
+    "avg_docs_retrieved": 5,
+    "failed_runs": 0,
+    "total_runs": 8
+  },
+  "ragas_scores": {},
+  "ragas_error": "ragas not installed: No module named 'langchain_community.chat_models.vertexai'",
+  "deepeval_scores": {},
+  "deepeval_error": "deepeval not installed: No module named 'langchain.schema'",
+  "per_sample": [
+    {
+      "question": "What is LangGraph?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "vector_search"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.861,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "LangGraph is an open-source framework designed for developing, managing, and deploying agentic applications, characterized by its ability to create complex workflows called graphs. In LangGraph, a gra",
+      "error": null
+    },
+    {
+      "question": "How does LangGraph persistence work?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "hybrid_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.889,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "LangGraph utilizes a specialized persistence mechanism that enables the storage and management of conversation history and application state across multiple interactions. This is particularly importan",
+      "error": null
+    },
+    {
+      "question": "Compare vector search and hybrid search for RAG retrieval quality.",
+      "expected_strategy": "hybrid_search",
+      "strategies_used": [
+        "hybrid_search"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.934,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "Vector search and hybrid search represent two distinct approaches in retrieval-augmented generation (RAG) systems, each with its own strengths and weaknesses regarding retrieval quality.\n\n### Key Diff",
+      "error": null
+    },
+    {
+      "question": "What are the latest developments in LangGraph multi-agent support?",
+      "expected_strategy": "web_search",
+      "strategies_used": [
+        "hybrid_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.92,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "LangGraph has made significant strides in enhancing multi-agent support, facilitating the development, management, and deployment of agentic applications. \n\n### Key Developments\n- **Communication Mech",
+      "error": null
+    },
+    {
+      "question": "Explain how Reciprocal Rank Fusion works for combining retrieval results.",
+      "expected_strategy": "multi_query_retrieval",
+      "strategies_used": [
+        "hybrid_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.888,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "Reciprocal Rank Fusion (RRF) is a method used to combine the results of multiple retrieval systems, enhancing the overall relevance of retrieved documents. It primarily operates on the principle of ra",
+      "error": null
+    },
+    {
+      "question": "What retrieval strategy should I use for a question that needs information from multiple sources?",
+      "expected_strategy": "multi_query_retrieval",
+      "strategies_used": [
+        "hybrid_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.891,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "When dealing with a question that requires information from multiple sources, a hybrid retrieval strategy is the most effective approach. This method combines various retrieval techniques to ensure co",
+      "error": null
+    },
+    {
+      "question": "How does the reflection agent detect hallucinations?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "hybrid_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.884,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "The reflection agent detects hallucinations through specific mechanisms designed to verify the accuracy of its responses. Here\u2019s an overview of the key processes involved:\n\n### Key Mechanisms\n\n- **Ret",
+      "error": null
+    },
+    {
+      "question": "What confidence threshold is used to decide whether to retry retrieval?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "vector_search"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.719,
+      "confidence_level": "medium",
+      "retry_count": 1,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "The confidence threshold for determining when to retry retrieval attempts is not explicitly stated in the provided context. However, it can be inferred that when implementing retry mechanisms, factors",
+      "error": null
+    }
+  ]
+}

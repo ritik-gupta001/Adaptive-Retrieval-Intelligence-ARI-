@@ -1,0 +1,104 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ari-platform"
+version = "1.0.0"
+description = "Adaptive Retrieval Intelligence — production LangGraph RAG platform"
+requires-python = ">=3.12"
+
+# Core runtime dependencies (always installed)
+dependencies = [
+    # LangGraph + LangChain
+    "langgraph>=0.2.0",
+    "langchain>=0.3.0",
+    "langchain-community>=0.3.0",
+    "langchain-anthropic>=0.2.0",
+    "langchain-openai>=0.2.0",
+    "langchain-chroma>=0.1.0",
+
+    # LLM providers
+    "anthropic>=0.34.0",
+    "openai>=1.40.0",
+
+    # Vector store + retrieval
+    "chromadb>=0.5.0",
+    "rank-bm25>=0.2.2",
+
+    # Web search
+    "tavily-python>=0.5.0",
+
+    # API
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "httpx>=0.27.0",
+    "python-multipart>=0.0.18",
+    "pypdf>=5.0.0",
+
+    # Config + validation
+    "pydantic>=2.8.0",
+    "pydantic-settings>=2.4.0",
+    "pyyaml>=6.0.0",
+    "python-dotenv>=1.0.0",
+    "python-json-logger>=2.0.0",
+
+    # Observability
+    "langsmith>=0.1.0",
+]
+
+[project.optional-dependencies]
+# Reranking (BGE — local model)
+bge = [
+    "sentence-transformers>=3.0.0",
+]
+
+# Reranking (Cohere — hosted API)
+cohere = [
+    "cohere>=5.0.0",
+]
+
+# Graph RAG (Neo4j)
+graph = [
+    "neo4j>=5.20.0",
+]
+
+# Checkpointer backends (beyond MemorySaver)
+checkpointer-sqlite = [
+    "langgraph-checkpoint-sqlite>=2.0.0",
+]
+checkpointer-postgres = [
+    "langgraph-checkpoint-postgres>=2.0.0",
+    "psycopg[binary]>=3.1.0",
+]
+
+# Evaluation
+eval = [
+    "ragas>=0.1.0",
+    "deepeval>=0.21.0",
+]
+
+# Development
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-mock>=3.12.0",
+]
+
+# Production extras bundled together
+prod = [
+    "ari-platform[bge,checkpointer-sqlite]",
+]
+
+# Everything
+all = [
+    "ari-platform[bge,cohere,graph,checkpointer-sqlite,checkpointer-postgres,eval,dev]",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*", "evals*", "ingestion*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

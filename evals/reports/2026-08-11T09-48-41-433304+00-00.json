@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-08-11T09:48:41.433304+00:00",
+  "total_queries": 8,
+  "our_metrics": {
+    "router_accuracy": 0.375,
+    "avg_confidence_score": 0.550375,
+    "avg_retry_count": 1.5,
+    "hallucination_rate": 0.125,
+    "clarification_rate": 0.0,
+    "avg_docs_retrieved": 4,
+    "failed_runs": 0,
+    "total_runs": 8
+  },
+  "ragas_scores": {},
+  "ragas_error": "ragas not installed: No module named 'ragas'",
+  "deepeval_scores": {},
+  "deepeval_error": "deepeval not installed: No module named 'deepeval'",
+  "per_sample": [
+    {
+      "question": "What is LangGraph?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "vector_search"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.8,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "LangGraph is an open-source framework and a component of the LangGraph platform, which is designed to help developers create, manage, and deploy agentic applications. It allows users to develop comple",
+      "error": null
+    },
+    {
+      "question": "How does LangGraph persistence work?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "vector_search"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.835,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "LangGraph persistence operates through a mechanism known as the Checkpointer, which manages short-term memory by saving checkpoints to persistent storage. Here are the key features of LangGraph persis",
+      "error": null
+    },
+    {
+      "question": "Compare vector search and hybrid search for RAG retrieval quality.",
+      "expected_strategy": "hybrid_search",
+      "strategies_used": [
+        "web_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.427,
+      "confidence_level": "low",
+      "retry_count": 2,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "[Low confidence \u2014 treat with caution]\n\nThe provided context does not include specific quantitative metrics for comparing the retrieval quality of vector search and hybrid search techniques in Retrieva",
+      "error": null
+    },
+    {
+      "question": "What are the latest developments in LangGraph multi-agent support?",
+      "expected_strategy": "web_search",
+      "strategies_used": [
+        "web_search"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.517,
+      "confidence_level": "medium",
+      "retry_count": 2,
+      "hallucinations": [
+        "monitoring of latency and error rates, facilitating ongoing optimization"
+      ],
+      "clarification_needed": false,
+      "answer_preview": "As of October 2023, LangGraph has introduced several features and improvements related to multi-agent support, focusing on orchestration and collaboration among agents. Key aspects include:\n\n### Multi",
+      "error": null
+    },
+    {
+      "question": "Explain how Reciprocal Rank Fusion works for combining retrieval results.",
+      "expected_strategy": "multi_query_retrieval",
+      "strategies_used": [
+        "web_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.188,
+      "confidence_level": "low",
+      "retry_count": 2,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "[Low confidence \u2014 treat with caution]\n\nThe context provided does not contain specific information about the Reciprocal Rank Fusion method for combining search retrieval results. Therefore, I cannot an",
+      "error": null
+    },
+    {
+      "question": "What retrieval strategy should I use for a question that needs information from multiple sources?",
+      "expected_strategy": "multi_query_retrieval",
+      "strategies_used": [
+        "web_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.31,
+      "confidence_level": "low",
+      "retry_count": 2,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "[Low confidence \u2014 treat with caution]\n\nTo implement effective multi-source retrieval for gathering targeted information, consider the following strategies:\n\n### 1. **Chunking Techniques**\n- Utilize **",
+      "error": null
+    },
+    {
+      "question": "How does the reflection agent detect hallucinations?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "web_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.833,
+      "confidence_level": "high",
+      "retry_count": 2,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "A reflection agent can employ the following identification methods to detect hallucinations in its outputs:\n\n- **Retrieval-Based Validation**: This method compares the outputs of large language models",
+      "error": null
+    },
+    {
+      "question": "What confidence threshold is used to decide whether to retry retrieval?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "web_search"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.493,
+      "confidence_level": "low",
+      "retry_count": 2,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "[Low confidence \u2014 treat with caution]\n\nThe provided context does not specify an exact confidence threshold for triggering a retry of the retrieval process. It mentions mechanisms such as max_retries f",
+      "error": null
+    }
+  ]
+}

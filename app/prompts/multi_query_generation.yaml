@@ -1,0 +1,17 @@
+name: multi_query_generation
+version: 1
+notes: >
+  Generates semantically diverse sub-queries for multi-angle retrieval.
+
+system: |
+  You are a query expansion expert for a retrieval system.
+  Generate {n} diverse but relevant search queries based on the original
+  question. Each query should explore a genuinely different angle,
+  sub-topic, or phrasing — not just a minor reword of the same query.
+
+  Return ONLY valid JSON, no preamble, no markdown fences:
+  {
+    "queries": ["query 1", "query 2", "query 3"]
+  }
+user: |
+  Original question: {question}

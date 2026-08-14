@@ -1,0 +1,135 @@
+{
+  "timestamp": "2026-08-11T09:43:58.738881+00:00",
+  "total_queries": 8,
+  "our_metrics": {
+    "router_accuracy": 0.8,
+    "avg_confidence_score": 0.8554,
+    "avg_retry_count": 0.2,
+    "hallucination_rate": 0.0,
+    "clarification_rate": 0.0,
+    "avg_docs_retrieved": 4,
+    "failed_runs": 3,
+    "total_runs": 8
+  },
+  "ragas_scores": {},
+  "ragas_error": "ragas not installed: No module named 'ragas'",
+  "deepeval_scores": {},
+  "deepeval_error": "deepeval not installed: No module named 'deepeval'",
+  "per_sample": [
+    {
+      "question": "What is LangGraph?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "vector_search"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.712,
+      "confidence_level": "medium",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "LangGraph is an open-source framework that is part of the LangGraph platform, which is offered by LangChain as a commercial solution for developing, managing, and deploying agentic applications. It en",
+      "error": null
+    },
+    {
+      "question": "How does LangGraph persistence work?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "vector_search"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.835,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "LangGraph employs a memory mechanism known as Checkpointer for its persistence features, specifically designed for short-term memory. Here's how it works:\n\n- **Checkpoints**: Checkpoints are saved to ",
+      "error": null
+    },
+    {
+      "question": "Compare vector search and hybrid search for RAG retrieval quality.",
+      "expected_strategy": "hybrid_search",
+      "strategies_used": [],
+      "strategy_correct": null,
+      "confidence_score": 0.0,
+      "confidence_level": "low",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "",
+      "error": "Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT"
+    },
+    {
+      "question": "What are the latest developments in LangGraph multi-agent support?",
+      "expected_strategy": "web_search",
+      "strategies_used": [
+        "web_search",
+        "multi_query_retrieval"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.948,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "The latest developments in LangGraph multi-agent support include:\n\n### New Features with AgentControl\n- **Agent Graphs**: Externalizes multi-agent topology into a visual graph for better monitoring.\n-",
+      "error": null
+    },
+    {
+      "question": "Explain how Reciprocal Rank Fusion works for combining retrieval results.",
+      "expected_strategy": "multi_query_retrieval",
+      "strategies_used": [],
+      "strategy_correct": null,
+      "confidence_score": 0.0,
+      "confidence_level": "low",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "",
+      "error": "Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT"
+    },
+    {
+      "question": "What retrieval strategy should I use for a question that needs information from multiple sources?",
+      "expected_strategy": "multi_query_retrieval",
+      "strategies_used": [
+        "multi_query_retrieval"
+      ],
+      "strategy_correct": true,
+      "confidence_score": 0.887,
+      "confidence_level": "high",
+      "retry_count": 1,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "To effectively gather information from multiple sources for a specific question, consider the following retrieval strategies:\n\n### 1. Hybrid Search\n- **Leverages both approaches:** Combines semantic a",
+      "error": null
+    },
+    {
+      "question": "How does the reflection agent detect hallucinations?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [
+        "multi_query_retrieval"
+      ],
+      "strategy_correct": false,
+      "confidence_score": 0.895,
+      "confidence_level": "high",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "The reflection agent detects hallucinations using various methods, primarily focused on validating the accuracy of its outputs against reliable sources. Key detection strategies include:\n\n- **Retrieva",
+      "error": null
+    },
+    {
+      "question": "What confidence threshold is used to decide whether to retry retrieval?",
+      "expected_strategy": "vector_search",
+      "strategies_used": [],
+      "strategy_correct": null,
+      "confidence_score": 0.0,
+      "confidence_level": "low",
+      "retry_count": 0,
+      "hallucinations": [],
+      "clarification_needed": false,
+      "answer_preview": "",
+      "error": "Recursion limit of 25 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/GRAPH_RECURSION_LIMIT"
+    }
+  ]
+}

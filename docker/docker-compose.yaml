@@ -1,0 +1,100 @@
+version: "3.9"
+
+# ── Usage ─────────────────────────────────────────────────────────────────────
+#
+# Full stack (frontend + backend + Chroma):
+#   docker compose up
+#
+# Backend only (no frontend/nginx):
+#   docker compose up backend chroma
+#
+# With Graph RAG (adds Neo4j):
+#   GRAPH_RAG_ENABLED=true docker compose --profile graph up
+#
+# First-time ingestion (after backend is running):
+#   docker compose run --rm backend python -m ingestion.chunk_and_embed ./data/raw
+#
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+
+  # ── FastAPI backend ──────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    env_file: ../.env
+    environment:
+      # Point Chroma at the container, not localhost
+      CHROMA_DIR: /app/data/chroma
+      VECTOR_STORE: chroma
+    volumes:
+      - ari_data:/app/data
+    ports:
+      - "8000:8000"     # expose for direct access / development
+    depends_on:
+      chroma:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+  # ── nginx frontend ───────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+    ports:
+      - "80:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ── Chroma vector store ──────────────────────────────────────────────────
+  chroma:
+    image: chromadb/chroma:0.5.0
+    volumes:
+      - chroma_data:/chroma/chroma
+    ports:
+      - "8001:8000"   # Chroma's default port, remapped to 8001 to avoid clash
+    environment:
+      IS_PERSISTENT: "TRUE"
+      ANONYMIZED_TELEMETRY: "FALSE"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # ── Neo4j (optional, Graph RAG profile) ─────────────────────────────────
+  neo4j:
+    image: neo4j:5.20-community
+    profiles: ["graph"]   # only starts with: docker compose --profile graph up
+    volumes:
+      - neo4j_data:/data
+    ports:
+      - "7474:7474"   # Browser UI
+      - "7687:7687"   # Bolt
+    environment:
+      NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD:-changeme123}"
+      NEO4J_server_memory_heap_initial__size: "512m"
+      NEO4J_server_memory_heap_max__size: "1g"
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "${NEO4J_PASSWORD:-changeme123}", "RETURN 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  ari_data:        # Chroma index + BM25 corpus + SQLite checkpoints
+  chroma_data:     # Chroma container's own persistence
+  neo4j_data:      # Neo4j graph data (only used with --profile graph)

@@ -1,0 +1,83 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0d0f12;
+  --surface: #14171c;
+  --border: #1e2228;
+  --muted: #2a2f38;
+  --text: #e2e6ed;
+  --dim: #6b7280;
+  --accent: #4f9cf9;
+  --accent2: #7c3aed;
+  --success: #10b981;
+  --warn: #f59e0b;
+  --danger: #ef4444;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'Inter', system-ui, sans-serif;
+  --radius: 6px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 2px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes flowEdge {
+  to { stroke-dashoffset: -20; }
+}
+
+@keyframes pulseRect {
+  0%, 100% { stroke: #10b981; filter: drop-shadow(0 0 2px rgba(16, 185, 129, 0.4)); }
+  50% { stroke: #34d399; filter: drop-shadow(0 0 8px rgba(52, 211, 153, 0.8)); }
+}
+
+@keyframes pulseOpacity {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+textarea {
+  resize: none;
+  outline: none;
+}
+
+button:hover {
+  filter: brightness(1.15);
+}
+
+button:active {
+  transform: scale(0.97);
+}
